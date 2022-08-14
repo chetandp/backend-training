@@ -2,6 +2,13 @@ const express = require('express');
 
 const router = express.Router();
 
+router.get('/movies', function (req, res) {
+
+    const movieNames=['Batman Begins','The Dark Knight','The Dark Knight Rises','IronMan']
+   
+    res.send(movieNames)
+});
+
 router.get("/movies/:indexNumber", function(req, res){
     const movies = ["Rang de basanti", "The shining", "Lord of the rings", "Batman begins"]
     console.log(req.params.indexNumber)
