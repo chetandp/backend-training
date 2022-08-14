@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/movies', function (req, res) {
 
-    const movieNames=['Batman Begins','The Dark Knight','The Dark Knight Rises','IronMan']
+    const movieNames=["Rang de basanti", "The shining", "Lord of the rings", "Batman begins"]
    
     res.send(movieNames)
 });
