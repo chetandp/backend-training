@@ -1,38 +1,19 @@
+
 const express = require('express');
-const abc = require('../introduction/intro')
+
 const router = express.Router();
 
-router.get('/test-me', function (req, res) {
-    console.log('My batch is', abc.name)
-    abc.printName()
-    logger.welcome()
+router.get("/movies/:indexnumber", function(req,res){
+    const movies = ["rang de basanti", "the shining", "lord of the rings", "batman begains"]
+    console.log(req.params.indexnumber)
+let moviesindex = req.params.indexnumber
+//check index value.less than 0 or greater than array (length - 1)are not valid
+if(moviesindex<0 || moviesindex>=movies.length) {
+//if the index is invalid send an error message
+return res.send('the index value is not correct, please check it')
+}
 
-    res.send('My second ever api!')
-});
-
-router.get('/students', function (req, res){
-    let students = ['Sabiha', 'Neha', 'Akash']
-    res.send(students)
+//if the index was valid send the movie at that index in response
+let requiredmovie = movies[moviesindex]
+res.send(requiredmovie)
 })
-
-router.get('/student-details/:name', function(req, res){
-    /*
-    params is an attribute inside request that contains 
-    dynamic values.
-    This value comes from the request url in the form of an 
-    object where key is the variable defined in code 
-    and value is what is sent in the request
-    */
-
-    let requestParams = req.params
-
-    // JSON strigify function helps to print an entire object
-    // We can use any ways to print an object in Javascript, JSON stringify is one of them
-    console.log("This is the request "+ JSON.stringify(requestParams))
-    let studentName = requestParams.name
-    console.log('Name of the student is ', studentName)
-    
-    res.send('Dummy response')
-})
-
-module.exports = router;
